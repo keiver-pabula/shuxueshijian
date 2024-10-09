@@ -1,0 +1,127 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{数值代数作业1}
+\author{keiver3034 }
+\date{October 2024}
+
+\begin{document}
+\title{Shuzhi Daishu Programming Homework 1}
+
+\author{Keiver Pabula 3210300365}
+\date{Due time: October 07, 2024}
+
+\maketitle
+
+\begin{abstract}
+   This report mainly discusses the implementation of three numerical methods: the bisection method, Newton's method, and the secant method. We implemented the three algorithms in C++ and used them to solve problems.
+\end{abstract}
+
+\section*{Problem A}
+
+Solution Approach:
+\begin{itemize}
+\item Step 1:
+
+    Create a base class EquationSolver that will serve as the interface for all three numerical methods (bisection method, Newton's method, and secant method). Define a pure virtual method solve that each derived class must implement, providing the algorithm for solving nonlinear equations. This class should take the corresponding parameters as input.
+
+\item Step 2:
+
+    For each numerical method (bisection, Newton, secant), we will create a derived class that implements the solve function. Below is an overview of the implementation:
+
+    \item Bisection Method
+    The bisection method iteratively divides the interval in half and converges to the root. We will implement the logic in the derived class, referring to the code from the textbook.
+
+    \item Newton's Method
+    Newton's method uses the derivative of the function and iteratively converges to the root. We will refer to the code from the textbook for implementation.
+
+    \item Secant Method
+    The secant method uses two initial approximations to find the root by drawing a secant line between them. We will refer to the code from the textbook for implementation.
+\end{itemize}
+
+
+
+\section*{Problem B}
+
+\begin{itemize}
+Use the code designed in Question 1 as the virtual function, then input the corresponding data to form the required answer.
+
+    \item  Step 1: Write the function
+
+Write the virtual function in the base class as described in the previous step.
+
+    \item  Step 2: Write the derived class
+
+Create the derived classes for each numerical method (bisection, Newton, secant) and implement the solve function in each derived class.
+
+    \item  Step 3: Input the parameters into the function in the derived class and get the result
+
+Insert the corresponding parameters into the functions in the derived class and calculate the result.
+We get the answer are：
+f1 root=1.5789
+f2 root=0.99999
+f3 root=1.946
+f4 root=0.757279
+\end{itemize}
+
+
+\section*{Problem C}
+
+The steps are the same as in part B, but this time using Newton's method, 
+We input the function and use the header file, and fill the input in the function and the result obtained is that the root is 4.49341.
+These findings illustrate that Newton's method exhibits rapid and precise convergence when the initial estimate is sufficiently close to the root.
+
+\section*{Problem D}
+
+Similar to the previous question, we directly use the base class from Question 1 and apply the function from our class. By inserting our parameters, we can obtain the following result.
+\begin{itemize}
+    \item sin(x / 2) - 1 Initial value0，pi/2， value：3.1388
+    \item sin(x / 2) - 1 Initial value1，pi/2， value：3.13898
+    \item exp(x) - tan(x) Initial value0，1.4， value：-6.28131
+    \item exp(x) - tan(x) Initial value1，1.4， value：1.30633
+    \item pow(x, 3) - 12 * pow(x, 2) + 3 * x + 1 Initial value0，-0.5， value：-0.188685
+    \item pow(x, 3) - 12 * pow(x, 2) + 3 * x + 1 Initial value1，-0.5， value：-0.188685
+\end{itemize}
+
+
+\section*{Problem E}
+
+Rearrange the equation
+\[
+V = L \left( 0.5\pi r^2 - r^2 \arcsin \left( \frac{h}{r} \right) - h \sqrt{r^2 - h^2} \right)
+\]
+
+where \( L = 10 \) ft, \( r = 1 \) ft, and \( V = 12.4 \) ft³, we were tasked with solving for \( h \) (the depth of the water) using the Bisection method, Newton's method, and the Secant method. The equation was solved for \( h \) to within an accuracy of 0.01 ft.
+
+The function implemented to solve the equation was:
+
+\[
+f(h) = L \left( 0.5\pi r^2 - r^2 \arcsin \left( \frac{h}{r} \right) - h \sqrt{r^2 - h^2} \right) - V
+\]
+
+Function definition: Define the function 
+f(h) based on the given formula for volume, and set the difference f(h)−V to zero, as you're solving for h use A for 
+ using Bisection Method and Newton's method also requires the derivative f ′(h), which would need to be computed based on the original formula.
+and we get the Result: 
+Bisection Method result 0.722734, answer 41.4097
+Newton Method result 0.722734, answer 41.4097
+they have the same answer so correct
+
+
+\section*{Problem F}
+
+Solving with a Different Initial Value:
+
+In the final step, solve the equation again using a different initial value, and observe if the resulting solution significantly deviates from the original. This could suggest that the system becomes unstable or that other influencing factors emerge as the length parameter is increased.
+
+The task involves validating the angle for a specified set of parameters and analyzing how variations in these parameters affect the outcome. To achieve this, you'll need to implement both numerical methods (Newton’s method and the secant method) and iteratively solve the equation using the provided values.
+
+answer a：0.575473 (alpha 33, 32,9731 degrees)
+answer b：0.578907 (33,1699 degrees)
+answer c：0.578907 (33,1699 degrees)
+
+\end{document}
+
+\section{Introduction}
+
+\end{document}
