@@ -1,0 +1,28 @@
+documentclass{ctexart}
+usepackage[utf8]{inputenc}
+usepackage{graphicx}
+usepackage{tikz}
+usetikzlibrary{shapes,arrows}
+
+
+title{作业1 StudentI}
+author{陈科辉 Keiver Pabula}
+date{19 Octobe,2022}
+begin{document}
+maketitle
+
+作业1：Student。
+section{设计思路}
+老方法：使用数组来储存所输入的数值，制造4个求和用于求平均分，其中因为平均分是小数（but 因为float\int=int 所以将求和设为1个float变量），对于最小数和最大数只要让x遍历最小数和最大数，比较x和当前的max和min，比max大：max=x，比min小: min=x.
+最后只要按要求输出即可。
+新方法：将student这个对象中存放它的名字，score1、2、3，和平均分。然后对于平均数，max，min和老方法一致，之后输出即可。
+
+section{测试说明}
+输出的内容
+begin{center}
+  includegraphics[scale=0.5]{ss1.png}
+end{center}
+和题目所要求的的一致（除了名字进行了缩写）
+
+
+end{document}
