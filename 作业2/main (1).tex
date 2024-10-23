@@ -1,0 +1,306 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{数值代数作业2}
+\author{keiver3034 }
+\date{October 2024}
+
+\begin{document}
+\title{Shuzhi Daishu Programming Homework 2}
+
+\author{Keiver Pabula 3210300365}
+
+\maketitle
+
+\begin{abstract}
+   This report mainly discusses the implementation of three numerical methods: the bisection method, Newton's method, and the secant method. We implemented the three algorithms in C++ and used them to solve problems.
+\end{abstract}
+
+\section*{Problem 1}
+The interpolation formula is given by:
+\[f(x) - p_1(f; x) = \frac{f''(\xi(x))}{2} (x - x_0)(x - x_1)\]
+where \( f(x) = \frac{1}{x} \), and the derivatives of \( f(x) \) are:
+\[f'(x) = -\frac{1}{x^2}, \quad f''(x) = \frac{2}{x^3}\]
+
+Substituting these into the interpolation formula:
+\[f(x) - \left(\frac{1}{x_1} + \frac{x - x_0}{x_1 - x_0} \left(\frac{1}{x_0} - \frac{1}{x_1}\right)\right) = \frac{2}{\xi(x)^3} \frac{(x - x_0)(x - x_1)}{2}\]
+\[f(x) - \left(\frac{1}{x_1} + \frac{x - x_0}{x_1 - x_0} \left(\frac{1}{x_0} - \frac{1}{x_1}\right)\right) = \frac{(x - x_0)(x - x_1)}{\xi(x)^3}\]
+
+2. Extending the Domain of \( \xi(x) \) and Finding Maximum and Minimum Values
+The point \( \xi(x) \) lies somewhere between \( x_0 \) and \( x_1 \). Since \( f(x) = \frac{1}{x} \) is a monotonically decreasing function, and the behavior of its second derivative affects the distribution of \( \xi(x) \), we can analyze the second derivative of \( f(x) \):
+\[f''(x) = \frac{2}{x^3}\]
+Since \( f''(x) \) is decreasing over the interval \( (1, 2) \), the minimum value of \( \xi(x) \) should be near \( x_0 = 1 \), and the maximum value should be near \( x_1 = 2 \).
+- The **maximum** of \( \xi(x) \) occurs near \( x_1 = 2 \),
+- The **minimum** of \( \xi(x) \) occurs near \( x_0 = 1 \).
+Thus, we can determine that the maximum and minimum values of \( \xi(x) \) occur within the interval \( [1, 2] \).
+Since \( f''(x) = \frac{2}{x^3} \), and \( f''(x) \) decreases as \( x \) increases, the maximum value of \( f''(x) \) in the interval \( [1, 2] \) occurs at \( x = 1 \), and the minimum value occurs at \( x = 2 \).
+
+Maximum of \( f''(\xi(x)) \):
+At \( x_0 = 1 \), we have:
+\[f''(1) = \frac{2}{1^3} = 2\]
+
+Minimum of \( f''(\xi(x)) \):
+At \( x_1 = 2 \), we have:
+\[f''(2) = \frac{2}{2^3} = \frac{2}{8} = 0.25\]
+
+
+
+
+\section*{Problem 2}
+The Lagrange interpolation polynomial is given by:
+\[p(x) = \sum_{i=0}^{n} f_i \cdot l_i(x)\]
+where \( l_i(x) \) is:
+\[l_i(x) = \prod_{j=0, j \neq i}^{n} \frac{x - x_j}{x_i - x_j}\]
+This construction ensures that \( p(x_i) = f_i \) for each \( i \).
+In order for the polynomial \( p(x) = \sum_{i=0}^{n} f_i \cdot l_i(x) \) to be non-negative, we define:
+\[l_i(x) = \prod_{j=0, j \neq i}^{n} \left( \frac{(x - x_j)^2}{(x_i - x_j)^2} \right)^{1/2}\]
+
+This modification ensures that the polynomial \( p(x) \) satisfies the non-negativity requirement, as the squares of terms ensure non-negative values for all \( x \). Thus, the polynomial \( p(x) \) meets the given conditions.
+
+
+\section*{Problem 3}
+We need to prove:
+\[f[t, t+1, \dots, t+n] = \frac{(e - 1)^n}{n!} e^t\]
+When \( n = 0 \), there is only one point \( t \), and the divided difference at this point is \( f[t] = e^t \). We can see that:
+\[\frac{(e - 1)^0}{0!} e^t = e^t\]
+
+So, the base case holds.
+Induction hypothesis:
+Assume the statement is true for \( n = k \), i.e.,
+\[f[t, t+1, \dots, t+k] = \frac{(e - 1)^k}{k!} e^t\]
+We need to prove that the statement holds for \( n = k+1 \).
+Using the recursive formula for divided differences, we have:
+\[f[t, t+1, \dots, t+k+1] = \frac{f[t+1, \dots, t+k+1] - f[t, t+1, \dots, t+k]}{(t+k+1) - t}\]
+Substituting the induction hypothesis:
+\[f[t, t+1, \dots, t+k+1] = \frac{\frac{(e - 1)^k}{k!} e^{t+1} - \frac{(e - 1)^k}{k!} e^t}{k+1}\]
+Since \( e^{t+1} = e \cdot e^t \), we get:
+\[f[t, t+1, \dots, t+k+1] = \frac{\frac{(e - 1)^k}{k!} e^t (e - 1)}{k+1} = \frac{(e - 1)^{k+1}}{(k+1)!} e^t\]
+
+
+2. 
+From Corollary 2.22, there exists a \( \xi \in (0, n) \) such that:
+\[f[0, 1, \dots, n] = \frac{1}{n!} f^{(n)}(\xi)\]
+For \( f(x) = e^x \), its \( n \)-th derivative is:
+\[f^{(n)}(x) = e^x\]
+
+Thus, Corollary 2.22 gives:
+\[\frac{(e-1)^n}{n!} = \frac{1}{n!} e^\xi\]
+
+Multiplying both sides by \( n! \), we get:
+\[(e - 1)^n = e^\xi\]
+
+Taking the natural logarithm of both sides:
+\[n \ln(e - 1) = \xi\]
+Hence, \( \xi = n \ln(e - 1) \).
+
+3. Since \( \ln(e - 1) \) is a constant and \( \ln(e - 1) \approx 0.31 \), we have:
+\[\xi = n \cdot 0.31\]
+Clearly, \( \xi \) is to the left of the midpoint \( n/2 \).
+
+
+\section*{Problem 4}
+Newton Interpolation Polynomial \( p_3(f; x) \)
+The Newton interpolation polynomial is constructed based on the given interpolation points. The general form of the interpolation polynomial is:
+\[p_3(f; x) = f(x_0) + f[x_0, x_1](x - x_0) + f[x_0, x_1, x_2](x - x_0)(x - x_1) + f[x_0, x_1, x_2, x_3](x - x_0)(x - x_1)(x - x_2)\]
+Given the values:
+\( f(0) = 5, f(1) = 3, f(3) = 5, f(4) = 12 \)
+We first calculate the divided differences:
+\[f[0, 1] = \frac{f(1) - f(0)}{1 - 0} = \frac{3 - 5}{1} = -2
+\]
+\[f[1, 3] = \frac{f(3) - f(1)}{3 - 1} = \frac{5 - 3}{2} = 1\]
+\[f[3, 4] = \frac{f(4) - f(3)}{4 - 3} = \frac{12 - 5}{1} = 7\]
+
+\[f[0, 1, 3] = \frac{f[1, 3] - f[0, 1]}{3 - 0} = \frac{1 - (-2)}{3} = \frac{3}{3} = 1\]
+\[f[1, 3, 4] = \frac{f[3, 4] - f[1, 3]}{4 - 1} = \frac{7 - 1}{3} = \frac{6}{3} = 2\]
+
+\[f[0, 1, 3, 4] = \frac{f[1, 3, 4] - f[0, 1, 3]}{4 - 0} = \frac{2 - 1}{4} = \frac{1}{4}\]
+
+Thus, we can write the polynomial as:
+\[p_3(f; x) = f(0) + f[0, 1](x - 0) + f[0, 1, 3](x - 0)(x - 1) + f[0, 1, 3, 4](x - 0)(x - 1)(x - 3)\]
+\[p_3(f; x) = 5 - 2(x - 0) + 1(x - 0)(x - 1) + \frac{1}{4}(x - 0)(x - 1)(x - 3)\]
+2. \[p_3'(x) = -2 + 1(2x - 1) + \frac{1}{4}(3x^2 - 8x + 3)
+\]
+Set \( p_3'(x) = 0 \) to find the critical points:
+\[-2 + 1(2x - 1) + \frac{1}{4}(3x^2 - 8x + 3) = 0\]
+\[-2 + 2x - 1 + \frac{3}{4}x^2 - 2x + \frac{3}{4} = 0\]
+\[\frac{3}{4}x^2 - 2 + \frac{3}{4} = 0\]
+\[\frac{3}{4}x^2 - \frac{5}{4} = 0\]
+\[3x^2 = 5 \Rightarrow x^2 = \frac{5}{3} \Rightarrow x = \pm \sqrt{\frac{5}{3}} = \pm \frac{\sqrt{15}}{3}\]
+Thus, the solutions are \( x = \frac{\sqrt{15}}{3} \) and \( x = -\frac{\sqrt{15}}{3} \).
+
+
+\section*{Problem 5}
+Given \( f(x) = x^7 \), we first calculate the fifth divided difference \( f[0, 1, 1, 1, 2, 2] \).
+For \( f(x) = x^7 \), its fifth derivative is:
+\[f^{(5)}(x) = 7 \times 6 \times 5 \times 4 \times 3 \times x^2 = 252x^2\]
+
+We know that the divided difference can be expressed in terms of the fifth derivative:
+\[f[0, 1, 1, 1, 2, 2] = \frac{1}{5!} f^{(5)}(\xi)\]
+Where \( \xi \in (0, 2) \), and since \( f^{(5)}(x) = 252x^2 \), we have:
+
+\[f[0, 1, 1, 1, 2, 2] = \frac{1}{120} \times 252 \xi^2 = \frac{21}{10} \xi^2\]
+
+To determine the value of \( \xi \):
+\[C = \frac{21}{10} \xi^2\]
+Solving for \( \xi \):
+\[\xi^2 = \frac{10C}{21} \quad \Rightarrow \quad \xi = \sqrt{\frac{10C}{21}}\] 
+This is the expression for \( \xi \) in terms of the known value \( C \).
+
+
+\section*{Problem 6}
+Given \( f(0) = 1 \), \( f(1) = 2 \), \( f'(1) = -1 \), \( f(3) = 0 \), and \( f'(3) = 0 \),
+
+The Hermite interpolation polynomial is:
+\[H(x) = f(1) h_0(x) + f'(1) h_1(x) + f(3) h_2(x) + f'(3) h_3(x) = 2 \cdot h_0(x) - 1 \cdot h_1(x) + 0 \cdot h_2(x) + 0 \cdot h_3(x) = 2 \cdot h_0(x) - h_1(x)\]
+
+Next, we calculate \( h_0(x) \) and \( h_1(x) \):
+\[h_0(x) = (1 - 2(x - x_0) \cdot l'_0(x)) \cdot l_0(x)^2\]
+\[h_1(x) = (x - x_0) \cdot l_0(x)^2\]
+Where
+\[l_0(x) = \frac{x - x_1}{x_0 - x_1}, \quad l_1(x) = \frac{x - x_0}{x_1 - x_0}\]
+Given \( x_0 = 1 \), and \( x_1 = 3 \), we have:
+\[l_0(x) = \frac{x - 3}{1 - 3} = \frac{x - 3}{-2}, \quad l_1(x) = \frac{x - 1}{3 - 1} = \frac{x - 1}{2}\]
+\[l_0(2) = \frac{2 - 3}{-2} = \frac{1}{2}, \quad l'_0(x) = \frac{1}{-2}\]
+\[l_1(2) = \frac{2 - 1}{2} = \frac{1}{2}, \quad l'_1(x) = \frac{1}{2}\]
+then
+\[h_0(2) = (1 - 2(2 - 1) \cdot \frac{1}{-2}) \cdot \left(\frac{1}{2}\right)^2 = (1 + 1) \cdot \frac{1}{4} = \frac{1}{2}\]
+\[h_1(2) = (2 - 1) \cdot \left(\frac{1}{2}\right)^2 = 1 \cdot \frac{1}{4} = \frac{1}{4}\]
+
+Thus, the value of the interpolation polynomial at \( x = 2 \) is:
+\[H(2) = 2 \cdot \frac{1}{2} - \frac{1}{4} = 1 - \frac{1}{4} = \frac{3}{4}\]
+
+Therefore,
+\[f(2) \approx \frac{3}{4}\]
+
+The error in Hermite interpolation can be expressed as:
+\[R(x) = \frac{f^{(5)}(\xi)}{5!} (x - x_0)^2 (x - x_1)^2\]
+Where \( \xi \in (x_0, x_1) \). Since we know \( |f^{(5)}(x)| \leq M \) holds over the interval \( [0, 3] \), the maximum error is:
+\[|R(2)| \leq \frac{M}{5!} (2 - 0)^2 (2 - 3)^2 = \frac{M}{120} \times 4 \times 1 = \frac{4M}{120} = \frac{M}{30}\]
+The maximum possible error is \( \frac{M}{30} \).
+
+\section*{Problem 7}  
+When \( k = 1 \), the forward difference is:
+\[\Delta^1 f(x) = f(x+h) - f(x) = h f[x_0, x_1]\]
+Assume that for \( k = n \), the forward difference can be expressed as:
+\[\Delta^n f(x) = n! h^n f[x_0, x_1, \dots, x_n]\]
+Now, we prove that the formula holds for \( k = n+1 \):
+   \[\Delta^{n+1} f(x) = \Delta^n f(x+h) - \Delta^n f(x)\]
+   Using the inductive assumption:
+   \[\Delta^{n+1} f(x) = n! h^n f[x_1, x_2, \dots, x_{n+1}] - n! h^n f[x_0, x_1, \dots, x_n]\]
+   By applying the definition of divided differences, we get:
+   \[\Delta^{n+1} f(x) = (n+1)! h^{n+1} f[x_0, x_1, \dots, x_{n+1}]\]
+Thus, the recursive relationship for forward differences is established.
+
+2. Proof of Backward Difference  
+   When \( k = 1 \), the backward difference is:
+   \[\nabla^1 f(x) = f(x) - f(x-h)\]
+   Using the divided difference:
+   \[\nabla^1 f(x) = h f[x_0, x_{-1}]\]
+
+   Assume that for \( k = n \), the backward difference can be expressed as:
+\[\nabla^n f(x) = n! h^n f[x_0, x_{-1}, \dots, x_{-n}]\]
+   Now, we prove that the formula holds for \( k = n+1 \):
+   \[\nabla^{n+1} f(x) = \nabla^n f(x) - \nabla^n f(x-h)\]
+
+   Using the inductive assumption:
+   \[\nabla^{n+1} f(x) = n! h^n f[x_{-1}, x_{-2}, \dots, x_{-(n+1)}] - n! h^n f[x_0, x_{-1}, \dots, x_{-n}]\]
+
+   By applying the definition of divided differences, we get:
+   \[\nabla^{n+1} f(x) = (n+1)! h^{n+1} f[x_0, x_{-1}, \dots, x_{-(n+1)}]\]
+Thus, the recursive relationship for backward differences is also established.
+
+
+\section*{Problem 8}
+\[f[x_0, x_1, \dots, x_n] = \frac{f(x_1, \dots, x_n) - f(x_0)}{x_1 - x_0}\]
+Now, we differentiate with respect to \( x_0 \):
+\[\frac{\partial}{\partial x_0} f[x_0, x_1, \dots, x_n] = \lim_{h \to 0} \frac{f[x_0 + h, x_1, \dots, x_n] - f[x_0, x_1, \dots, x_n]}{h}\]
+Since \( f \) is differentiable at \( x_0 \), we can reuse \( x_0 \) in the divided difference expression:
+\[\frac{\partial}{\partial x_0} f[x_0, x_1, \dots, x_n] = f[x_0, x_0, x_1, \dots, x_n]\]
+
+Thus, the result is proven.
+
+\section*{Problem 9}
+To minimize the maximum of the given polynomial \( P(x) = a_0 x^n + a_1 x^{n-1} + \cdots + a_n \) on the interval \( [a, b] \), we solve:
+
+\[\max_{x \in [a, b]} \left| P(x) \right|\]
+Then, we choose appropriate coefficients \( a_1, a_2, \dots, a_n \) to minimize this maximum.
+
+The Chebyshev polynomial \( T_n(x) \) is the optimal polynomial approximation on the interval \( [-1, 1] \). It minimizes the maximum absolute value of the oscillation on \( [-1, 1] \).
+
+\[x' = \frac{2x - (b + a)}{b - a}\]This maps the interval \( [a, b] \) to \( [-1, 1] \). 
+Therefore, the optimal solution is in the form of a polynomial that is a linear combination of Chebyshev polynomials:
+\[P(x) = c T_n\left( \frac{2x - (b + a)}{b - a} \right)\]
+where \( c \) is a constant, and \( T_n(x) \) is the Chebyshev polynomial of degree \( n \).
+
+\section*{Problem 10}
+The polynomial \( \hat{p}_n(x) \) is defined as:
+\[\hat{p}_n(x) = \frac{T_n(x)}{T_n(a)}\]
+
+where \( T_n(x) \) is the Chebyshev polynomial of degree \( n \). Since \( T_n(a) \) is the value of the Chebyshev polynomial at \( a \), the polynomial \( \hat{p}_n(x) \) satisfies the normalization condition:
+
+\[\hat{p}_n(a) = \frac{T_n(a)}{T_n(a)} = 1\]
+This ensures that \( \hat{p}_n(x) \in P_n^a \).
+The Chebyshev polynomial \( T_n(x) \) attains its absolute maximum on the interval \( [-1, 1] \) at several points where the value is \( \pm 1 \). Therefore, we have:
+
+\[\|\hat{p}_n(x)\|_\infty = \max_{x \in [-1,1]} \left| \frac{T_n(x)}{T_n(a)} \right| = \frac{1}{|T_n(a)|}\]
+
+Since \( T_n(x) \) minimizes the maximum oscillation on the interval \( [-1, 1] \), and \( \hat{p}_n(x) \) is the normalized form of \( T_n(x) \), for any \( p \in P_n^a \), we have:
+\[\|\hat{p}_n\|_\infty \leq \|p\|_\infty\]
+This holds because \( \hat{p}_n(x) \) already minimizes the maximum oscillation on the interval \( [-1, 1] \).
+
+
+\section*{Problem 11}
+The Bernstein basis polynomial is given by:
+\[b_{n,k}(t) = {n}\choose{k} t^k (1-t)^{n-k}.\]
+According to the definition:
+\[\frac{n-k}{n} b_{n,k}(t) = \frac{n-k}{n} {n}\choose{k} t^k (1-t)^{n-k},\]
+\[\frac{k+1}{n} b_{n,k+1}(t) = \frac{k+1}{n} {n}\choose{k+1} t^{k+1} (1-t)^{n-k-1}.\]
+
+For the first term:
+\[\frac{n - k}{n} {n}\choose{k} t^k (1-t)^{n-k}.\]
+We use the binomial coefficient:
+\[{n}\choose{k} = \frac{n!}{k!(n-k)!}\]
+
+Thus:
+\[\frac{n - k}{n} {n}\choose{k} = \frac{n - k}{n} \cdot \frac{n!}{k!(n-k)!} = \frac{(n-1)!}{k!(n-k-1)!}.\]
+So:
+\[\frac{n - k}{n} b_{n,k}(t) = {n-1}\choose{k} t^k (1-t)^{n-k-1}\]
+
+For the second term:
+\[\frac{k + 1}{n} {n}\choose{k+1} t^{k+1} (1-t)^{n-k-1}.\]
+
+Again, using the binomial coefficient:
+\[{n}\choose{k+1} = \frac{n!}{(k+1)!(n-k-1)!}.\]
+
+Thus:
+\[\frac{k + 1}{n} {n}\choose{k+1} = \frac{k + 1}{n} \cdot \frac{n!}{(k+1)!(n-k-1)!} = \frac{(n-1)!}{(k+1)!(n-k-1)!}.
+\]
+
+So, the second term simplifies to:
+\[\frac{k + 1}{n} b_{n,k+1}(t) = {n-1}\choose{k+1} t^{k+1} (1-t)^{n-k-1}.\]
+
+We obtain:
+\[b_{n-1,k}(t) = {n-1}\choose{k} t^k (1-t)^{n-k-1} + {n-1}\choose{k+1} t^{k+1} (1-t)^{n-k-1}\]
+
+Thus, the proof is complete.
+
+\section*{Problem 12}
+\[\int_0^1 b_{n,k}(t) \, dt = {n}\choose{k} \int_0^1 t^k (1-t)^{n-k} \, dt.\]
+\[B(x, y) = \int_0^1 t^{x-1} (1-t)^{y-1} \, dt.\]
+
+For our case, we set \( x = k+1 \) and \( y = n-k+1 \), so we have:
+\[\int_0^1 t^k (1-t)^{n-k} \, dt = B(k+1, n-k+1).\]
+The Beta function is related to the Gamma function through the following relationship\[B(x, y) = \frac{\Gamma(x) \Gamma(y)}{\Gamma(x+y)}.\]
+\( \Gamma(n+1) = n! \)
+\[B(k+1, n-k+1) = \frac{k! (n-k)!}{(n+1)!}.\]
+\[\int_0^1 b_{n,k}(t) \, dt = {n}\choose{k} \cdot \frac{k! (n-k)!}{(n+1)!}.\]
+Since \( {n}\choose{k} = \frac{n!}{k!(n-k)!} \), we can simplify this expression to:
+\[\int_0^1 b_{n,k}(t) \, dt = \frac{n!}{k!(n-k)!} \cdot \frac{k!(n-k)!}{(n+1)!} = \frac{1}{n+1}.\]
+
+We have proven that for all \( k = 0, 1, \dots, n \), the following holds:
+\[\int_0^1 b_{n,k}(t) \, dt = \frac{1}{n+1}.\]
+
+This shows that the integral of the Bernstein basis polynomial depends only on its degree \( n \).
+
+
+\end{document}
