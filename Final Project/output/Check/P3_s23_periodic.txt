@@ -1,0 +1,78 @@
+Knots: 0.948718 1.000000 -1.000000 -0.948718 -0.897436 -0.846154 -0.794872 -0.743590 -0.692308 -0.641026 -0.589744 -0.538462 -0.487179 -0.435897 -0.384615 -0.333333 -0.282051 -0.230769 -0.179487 -0.128205 -0.076923 -0.025641 0.025641 0.076923 0.128205 0.179487 0.230769 0.282051 0.333333 0.384615 0.435897 0.487179 0.538462 0.589744 0.641026 0.692308 0.743590 0.794872 0.846154 0.897436 0.948718 1.000000 -1.000000 
+Piecewise Polynomials:
+Interval: [-1.000000, -0.948718]
+Polynomial Coefficients: -0.002420, 0.429480, 0.075278
+Interval: [-0.948718, -0.897436]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.897436, -0.846154]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.846154, -0.794872]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.794872, -0.743590]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.743590, -0.692308]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.692308, -0.641026]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.641026, -0.589744]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.589744, -0.538462]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.538462, -0.487179]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.487179, -0.435897]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.435897, -0.384615]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.384615, -0.333333]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.333333, -0.282051]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.282051, -0.230769]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.230769, -0.179487]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.179487, -0.128205]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.128205, -0.076923]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.076923, -0.025641]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [-0.025641, 0.025641]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.025641, 0.076923]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.076923, 0.128205]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.128205, 0.179487]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.179487, 0.230769]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.230769, 0.282051]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.282051, 0.333333]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.333333, 0.384615]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.384615, 0.435897]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.435897, 0.487179]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.487179, 0.538462]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.538462, 0.589744]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.589744, 0.641026]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.641026, 0.692308]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.692308, 0.743590]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.743590, 0.794872]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.794872, 0.846154]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.846154, 0.897436]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
+Interval: [0.897436, 0.948718]
+Polynomial Coefficients: 0.045985, 0.365379, 0.075278
